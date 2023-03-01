@@ -4,7 +4,15 @@
 {% block content %}
 {% if issues %}
 {% for issue in issues %}
-<p>{{ issue.summary }}</p>
+<div class="card">
+    <h5 class="card-header">Задача #{{ issue.pk }}</h5>
+    <div class="card-body">
+        <h5 class="card-title">{{ issue.summary }}</h5>
+        <p class="card-text"><b>Тип задачи:</b> {{ issue.type }}</p>
+        <p class="card-text"><b>Статус задачи:</b> {{ issue.status }}</p>
+        <a href="{% url 'issue_details_view' issue.pk %}" class="btn btn-primary">Подробнее >>></a>
+    </div>
+</div>
 {% endfor %}
 {% else %}
 <div class="another_view">

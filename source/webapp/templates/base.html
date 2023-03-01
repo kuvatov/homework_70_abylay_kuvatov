@@ -6,6 +6,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'media/favicon.ico' %}">
     <title>{% block title %}Document{% endblock %}</title>
     {% load bootstrap5 %}
     {% bootstrap_css %}
@@ -16,8 +18,8 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="#" alt="" width="30" height="24"
+                <a class="navbar-brand" href="{% url 'issues_view' %}">
+                    <img src="{% static 'media/favicon.ico' %}" alt="" width="30" height="30"
                          class="d-inline-block align-text-top">
                     Issue Tracker
                 </a>
@@ -25,7 +27,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">задачи</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'issues_redirect_view' %}">задачи</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">добавить

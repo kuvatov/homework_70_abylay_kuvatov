@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Issue Details{% endblock %}
+{% block content_heading %}Подробное описание{% endblock %}
+{% block content %}
+<div class="card">
+    <h5 class="card-header">Задача #{{ issue.pk }}</h5>
+    <div class="card-body">
+        <h5 class="card-title">{{ issue.summary }}</h5>
+        <p class="card-text"><b>Подробное описание:</b> {{ issue.description }}</p>
+        <p class="card-text"><b>Тип задачи:</b> {{ issue.type }}</p>
+        <p class="card-text"><b>Статус задачи:</b> {{ issue.status }}</p>
+        <a href="#" class="btn btn-primary">Редактировать</a>
+        <a href="#" class="btn btn-danger">Удалить</a>
+    </div>
+</div>
+{% endblock %}
