@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Issues View{% endblock %}
+{% block content_heading %}Задачи{% endblock %}
+{% block content %}
+{% if issues %}
+{% for issue in issues %}
+<p>{{ issue.summary }}</p>
+{% endfor %}
+{% else %}
+<div class="another_view">
+    <h2>Задачи не найдены!</h2>
+    <p><a href="#">Добавить задачу</a></p>
+</div>
+{% endif %}
+{% endblock %}

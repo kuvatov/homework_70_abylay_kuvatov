@@ -1,0 +1,54 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Document{% endblock %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+<header class="main_header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="#" alt="" width="30" height="24"
+                         class="d-inline-block align-text-top">
+                    Issue Tracker
+                </a>
+                {% block navbar_item %}{% endblock %}
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">задачи</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">добавить
+                                задачу</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="main_content">
+    <div class="container">
+        <div class="content_heading">
+            <h5 class="page_name">{% block content_heading %}{% endblock %}</h5>
+        </div>
+        {% block content %}{% endblock %}
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <p>Abylay Kuvatov © 2023</p>
+    </div>
+</div>
+</body>
+</html>
