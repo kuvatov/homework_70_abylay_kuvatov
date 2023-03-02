@@ -5,12 +5,18 @@
 <div class="card">
     <h5 class="card-header">Задача #{{ issue.pk }}</h5>
     <div class="card-body">
-        <h5 class="card-title">{{ issue.summary }}</h5>
+        <h5 class="card-title pb-3 card_view">{{ issue.summary }}</h5>
+        {% if issue.description %}
         <p class="card-text"><b>Подробное описание:</b> {{ issue.description }}</p>
+        {% else %}
+        <p class="card-text"><b>Подробное описание:</b> Подробное описание отсутствует!</p>
+        {% endif %}
         <p class="card-text"><b>Тип задачи:</b> {{ issue.type }}</p>
         <p class="card-text"><b>Статус задачи:</b> {{ issue.status }}</p>
-        <a href="{% url 'issue_edit_view' issue.pk %}" class="btn btn-primary">Редактировать</a>
-        <a href="{% url 'issue_delete_view' issue.pk %}" class="btn btn-danger">Удалить</a>
+        <div class="page_action">
+            <a href="{% url 'issue_edit_view' issue.pk %}" class="btn btn-primary">Редактировать</a>
+            <a href="{% url 'issue_delete_view' issue.pk %}" class="btn btn-danger">Удалить</a>
+        </div>
     </div>
 </div>
 {% endblock %}

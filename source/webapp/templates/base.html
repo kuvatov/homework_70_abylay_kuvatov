@@ -41,7 +41,7 @@
 </header>
 <div class="main_content">
     <div class="container">
-        <div class="content_heading">
+        <div class="content_heading pt-5 pb-3">
             <h5 class="page_name">{% block content_heading %}{% endblock %}</h5>
         </div>
         {% block content %}{% endblock %}
@@ -52,5 +52,7 @@
         <p>Abylay Kuvatov © 2023</p>
     </div>
 </footer>
+
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
 </body>
 </html>

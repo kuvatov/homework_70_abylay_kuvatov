@@ -30,6 +30,9 @@ header, .navbar a:hover {
     height: 350px;
     object-fit: fill;
 }
+.card_view {
+    color: darkgoldenrod;
+}
 textarea {
     display: block;
     overflow: hidden;
