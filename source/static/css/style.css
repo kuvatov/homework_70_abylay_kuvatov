@@ -1,0 +1,60 @@
+body {
+    position: relative;
+    min-height: 100vh;
+}
+header {
+    background-color: silver;
+}
+header, .navbar a {
+    color: black;
+}
+header, .navbar a:hover {
+    color: gray;
+}
+.main_content {
+    padding-bottom: 100px;
+}
+.container a {
+    text-decoration: none;
+}
+.navbar {
+    font-size: 13px;
+    font-weight: 600;
+    padding-right: 30px;
+}
+.content_heading {
+    text-align: right;
+}
+.card img {
+    width: 100%;
+    height: 350px;
+    object-fit: fill;
+}
+textarea {
+    display: block;
+    overflow: hidden;
+    resize: none;
+}
+.page_action .btn {
+    width: 150px;
+}
+footer {
+    background-color: silver;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3.5rem;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer p {
+    margin: 0;
+    font-size: 13px;
+    color: black;
+    font-weight: 600;
+}

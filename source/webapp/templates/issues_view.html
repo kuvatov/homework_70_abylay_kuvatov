@@ -10,7 +10,7 @@
         <h5 class="card-title">{{ issue.summary }}</h5>
         <p class="card-text"><b>Тип задачи:</b> {{ issue.type }}</p>
         <p class="card-text"><b>Статус задачи:</b> {{ issue.status }}</p>
-        <a href="{% url 'issue_details_view' issue.pk %}" class="btn btn-primary">Подробнее >>></a>
+        <a href="{% url 'issue_details_view' issue.pk %}">Подробнее >>></a>
     </div>
 </div>
 {% endfor %}

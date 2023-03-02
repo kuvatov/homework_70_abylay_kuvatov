@@ -10,7 +10,7 @@
         <p class="card-text"><b>Тип задачи:</b> {{ issue.type }}</p>
         <p class="card-text"><b>Статус задачи:</b> {{ issue.status }}</p>
         <a href="{% url 'issue_edit_view' issue.pk %}" class="btn btn-primary">Редактировать</a>
-        <a href="#" class="btn btn-danger">Удалить</a>
+        <a href="{% url 'issue_delete_view' issue.pk %}" class="btn btn-danger">Удалить</a>
     </div>
 </div>
 {% endblock %}
