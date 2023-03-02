@@ -1,0 +1,8 @@
+{% load bootstrap5 %}
+{% bootstrap_javascript %}
+{% csrf_token %}
+{% bootstrap_form form %}
+<div class="page_action">
+    <input type="submit" class="btn btn-primary" value="Сохранить"/>
+    <a class="btn btn-danger" href="{% url 'issues_view' %}">Отмена</a>
+</div>

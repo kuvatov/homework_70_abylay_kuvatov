@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Issue Edit{% endblock %}
+{% block content_heading %}Редактировать задачу{% endblock %}
+{% block content %}
+<form action="{% url 'issue_edit_view' issue.pk %}" method="post" novalidate>
+    {% include 'partial/issue_form.html' %}
+</form>
+{% endblock %}
