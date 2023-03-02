@@ -5,8 +5,15 @@ from webapp.models import Issue, Type, Status
 
 
 class IssueForm(forms.ModelForm):
-    type = forms.ModelMultipleChoiceField(queryset=Type.objects.all(), label='Тип')
-    status = forms.ModelChoiceField(queryset=Status.objects.all(), label='Статус')
+    type = forms.ModelMultipleChoiceField(
+        queryset=Type.objects.all(),
+        label='Тип',
+        widget=forms.CheckboxSelectMultiple
+    )
+    status = forms.ModelChoiceField(
+        queryset=Status.objects.all(),
+        label='Статус'
+    )
 
     class Meta:
         model = Issue
