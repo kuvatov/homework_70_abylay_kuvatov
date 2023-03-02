@@ -15,20 +15,17 @@ class Issue(models.Model):
         verbose_name="Полное описание"
     )
     status = models.ForeignKey(
-        to="webapp.IssueStatus",
+        to="webapp.Status",
         on_delete=models.RESTRICT,
         null=False,
         blank=False,
         related_name="issue_statuses",
         verbose_name="Статус"
     )
-    type = models.ForeignKey(
-        to="webapp.IssueType",
-        on_delete=models.RESTRICT,
-        null=False,
-        blank=False,
-        related_name="issue_types",
-        verbose_name="Тип"
+    type = models.ManyToManyField(
+        to="webapp.Type",
+        related_name="issue_set",
+        blank=True
     )
     created_at = models.DateTimeField(
         auto_now_add=True,

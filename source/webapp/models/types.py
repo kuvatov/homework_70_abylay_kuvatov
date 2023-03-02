@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class IssueType(models.Model):
+class Type(models.Model):
     name = models.CharField(
         max_length=30,
         null=False,

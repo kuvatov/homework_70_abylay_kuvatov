@@ -1,3 +1,3 @@
-from .issue_types import IssueType
-from .issue_statuses import IssueStatus
 from .issues import Issue
+from .statuses import Status
+from .types import Type

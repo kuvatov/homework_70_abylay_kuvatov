@@ -8,7 +8,12 @@
     <h5 class="card-header">Задача #{{ issue.pk }}</h5>
     <div class="card-body">
         <h5 class="card-title pb-3 card_view">{{ issue.summary }}</h5>
-        <p class="card-text"><b>Тип задачи:</b> {{ issue.type }}</p>
+        <p class="card-text"><b>Тип задачи:</b> {% for type in issue.type.all %}
+            {{ type.name }}
+            {% if not forloop.last %},
+            {% endif %}
+            {% endfor %}
+        </p>
         <p class="card-text"><b>Статус задачи:</b> {{ issue.status }}</p>
         <a href="{% url 'issue_details_view' issue.pk %}">Подробнее >>></a>
     </div>

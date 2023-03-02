@@ -11,7 +11,12 @@
         {% else %}
         <p class="card-text"><b>Подробное описание:</b> Подробное описание отсутствует!</p>
         {% endif %}
-        <p class="card-text"><b>Тип задачи:</b> {{ issue.type }}</p>
+        <p class="card-text"><b>Тип задачи:</b> {% for type in issue.type.all %}
+            {{ type.name }}
+            {% if not forloop.last %},
+            {% endif %}
+            {% endfor %}
+        </p>
         <p class="card-text"><b>Статус задачи:</b> {{ issue.status }}</p>
         <div class="page_action">
             <a href="{% url 'issue_edit_view' issue.pk %}" class="btn btn-primary">Редактировать</a>

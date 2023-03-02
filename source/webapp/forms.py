@@ -1,12 +1,12 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from webapp.models import Issue, IssueType, IssueStatus
+from webapp.models import Issue, Type, Status
 
 
 class IssueForm(forms.ModelForm):
-    type = forms.ModelChoiceField(queryset=IssueType.objects.all())
-    status = forms.ModelChoiceField(queryset=IssueStatus.objects.all())
+    type = forms.ModelMultipleChoiceField(queryset=Type.objects.all(), label='Тип')
+    status = forms.ModelChoiceField(queryset=Status.objects.all(), label='Статус')
 
     class Meta:
         model = Issue
