@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils import timezone
 
 
 def validate_summary_exists(value):
@@ -50,6 +51,21 @@ class Issue(models.Model):
         auto_now=True,
         verbose_name="Дата и время редактирования"
     )
+    is_deleted = models.BooleanField(
+        verbose_name="Deleted",
+        null=False,
+        default=False
+    )
+    deleted_date = models.DateTimeField(
+        verbose_name="Date of deletion",
+        null=True,
+        default=None
+    )
 
     def __str__(self):
         return f"{self.summary} | {self.status} | {self.type}"
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        self.deleted_date = timezone.now()
+        self.save()

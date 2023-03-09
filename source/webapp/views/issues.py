@@ -31,7 +31,7 @@ class IssuesView(ListView):
         return context
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = super().get_queryset().exclude(is_deleted=True)
 
         if self.search_value:
             query = Q(summary__icontains=self.search_value) | Q(description__icontains=self.search_value)
