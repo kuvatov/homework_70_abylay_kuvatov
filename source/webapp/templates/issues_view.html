@@ -2,6 +2,9 @@
 {% block title %}Issues View{% endblock %}
 {% block content_heading %}Задачи{% endblock %}
 {% block content %}
+{% if is_paginated %}
+{% include 'partial/pagination.html' %}
+{% endif %}
 {% if issues %}
 {% for issue in issues %}
 <div class="card mb-3 border-dark">
@@ -24,5 +27,8 @@
     <h2>Задачи не найдены!</h2>
     <p><a href="#">Добавить задачу</a></p>
 </div>
+{% endif %}
+{% if is_paginated %}
+{% include 'partial/pagination.html' %}
 {% endif %}
 {% endblock %}

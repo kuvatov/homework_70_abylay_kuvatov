@@ -1,19 +1,20 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import TemplateView, RedirectView, ListView
 
 from webapp.forms import IssueForm
 from webapp.models import Issue
 
 
-class IssuesView(TemplateView):
+class IssuesView(ListView):
     template_name = 'issues_view.html'
+    context_object_name = 'issues'
+    paginate_by = 10
+    paginate_orphans = 1
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['issues'] = Issue.objects.all().order_by('pk')
-        return context
+    def get_queryset(self):
+        return Issue.objects.all().order_by('-created_at')
 
 
 class IssueDetailsView(TemplateView):
