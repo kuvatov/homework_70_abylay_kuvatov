@@ -52,14 +52,20 @@ class Issue(models.Model):
         verbose_name="Дата и время редактирования"
     )
     is_deleted = models.BooleanField(
-        verbose_name="Deleted",
+        verbose_name="Удален",
         null=False,
         default=False
     )
     deleted_date = models.DateTimeField(
-        verbose_name="Date of deletion",
+        verbose_name="Дата и время удаления",
         null=True,
         default=None
+    )
+    project = models.ForeignKey(
+        to='webapp.Project',
+        related_name='projects',
+        on_delete=models.RESTRICT,
+        verbose_name='Проект'
     )
 
     def __str__(self):
