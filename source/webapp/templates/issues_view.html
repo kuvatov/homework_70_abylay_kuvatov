@@ -2,6 +2,7 @@
 {% block title %}Issues View{% endblock %}
 {% block content_heading %}Задачи{% endblock %}
 {% block content %}
+{% include 'partial/search_form.html' %}
 {% if is_paginated %}
 {% include 'partial/pagination.html' %}
 {% endif %}
@@ -28,6 +29,7 @@
     <p><a href="#">Добавить задачу</a></p>
 </div>
 {% endif %}
+{% include 'partial/search_form.html' %}
 {% if is_paginated %}
 {% include 'partial/pagination.html' %}
 {% endif %}
