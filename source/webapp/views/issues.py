@@ -11,7 +11,7 @@ from webapp.models import Issue
 
 class IssuesView(ListView):
     model = Issue
-    template_name = 'issues_view.html'
+    template_name = 'issue/issues_view.html'
     context_object_name = 'issues'
     ordering = ['-created_at']
     paginate_by = 10
@@ -48,7 +48,7 @@ class IssuesView(ListView):
 
 
 class IssueDetailsView(TemplateView):
-    template_name = 'issue_details_view.html'
+    template_name = 'issue/issue_details_view.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -61,7 +61,7 @@ class IssuesRedirectView(RedirectView):
 
 
 class IssueAddView(TemplateView):
-    template_name = 'issue_add_view.html'
+    template_name = 'issue/issue_add_view.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -73,13 +73,13 @@ class IssueAddView(TemplateView):
         if form.is_valid():
             form.save()
             return redirect('issues_view')
-        return render(request, 'issue_add_view.html', context={
+        return render(request, 'issue/issue_add_view.html', context={
             'form': form
         })
 
 
 class IssueEditView(TemplateView):
-    template_name = 'issue_edit_view.html'
+    template_name = 'issue/issue_edit_view.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -93,14 +93,14 @@ class IssueEditView(TemplateView):
         if form.is_valid():
             form.save()
             return redirect('issue_details_view', pk=issue.pk)
-        return render(request, 'issue_edit_view.html', context={
+        return render(request, 'issue/issue_edit_view.html', context={
             'form': form,
             'issue': issue
         })
 
 
 class IssueDeleteView(TemplateView):
-    template_name = 'issue_delete_view.html'
+    template_name = 'issue/issue_delete_view.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
