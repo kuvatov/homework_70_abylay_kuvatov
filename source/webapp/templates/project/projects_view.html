@@ -14,7 +14,7 @@
         {% else %}
         <p class="card-text"><b>Дата окончания:</b> Дата окончания не задана!</p>
         {% endif %}
-        <a href="#">Подробнее >>></a>
+        <a href="{% url 'project_details_view' project.pk %}">Подробнее >>></a>
     </div>
 </div>
 {% endfor %}

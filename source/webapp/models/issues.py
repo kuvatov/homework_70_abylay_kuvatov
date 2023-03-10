@@ -63,7 +63,7 @@ class Issue(models.Model):
     )
     project = models.ForeignKey(
         to='webapp.Project',
-        related_name='projects',
+        related_name='issues',
         on_delete=models.RESTRICT,
         verbose_name='Проект'
     )

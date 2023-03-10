@@ -12,8 +12,4 @@ class ProjectsView(ListView):
 
 class ProjectDetailsView(DetailView):
     template_name = 'project/project_details_view.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['project'] = get_object_or_404(Project, pk=kwargs['pk'])
-        return context
+    model = Project
