@@ -8,6 +8,9 @@
     "status": 2,
     "created_at": "2023-03-01T17:41:07.984Z",
     "edited_at": "2023-03-02T20:18:08.085Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1,
       3
@@ -23,6 +26,9 @@
     "status": 1,
     "created_at": "2023-03-01T17:43:03.965Z",
     "edited_at": "2023-03-02T20:18:21.929Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1,
       3
@@ -38,6 +44,9 @@
     "status": 3,
     "created_at": "2023-03-01T17:47:10.034Z",
     "edited_at": "2023-03-02T20:18:32.198Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1
     ]
@@ -52,6 +61,9 @@
     "status": 2,
     "created_at": "2023-03-01T17:43:55.490Z",
     "edited_at": "2023-03-02T20:18:40.879Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1,
       2
@@ -67,6 +79,9 @@
     "status": 3,
     "created_at": "2023-03-01T17:52:15.418Z",
     "edited_at": "2023-03-02T20:18:50.780Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1,
       3
@@ -82,6 +97,9 @@
     "status": 2,
     "created_at": "2023-03-01T17:53:41.741Z",
     "edited_at": "2023-03-02T20:19:04.679Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1,
       2,
@@ -98,6 +116,9 @@
     "status": 3,
     "created_at": "2023-03-01T17:50:02.812Z",
     "edited_at": "2023-03-07T11:20:18.257Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1
     ]
@@ -112,6 +133,9 @@
     "status": 2,
     "created_at": "2023-03-07T11:19:54.642Z",
     "edited_at": "2023-03-07T11:19:54.642Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1,
       3
@@ -127,6 +151,9 @@
     "status": 1,
     "created_at": "2023-03-07T11:21:49.441Z",
     "edited_at": "2023-03-07T11:21:49.441Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1
     ]
@@ -141,6 +168,9 @@
     "status": 1,
     "created_at": "2023-03-07T11:23:09.698Z",
     "edited_at": "2023-03-07T11:23:09.698Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       3
     ]
@@ -155,6 +185,9 @@
     "status": 2,
     "created_at": "2023-03-07T11:24:07.738Z",
     "edited_at": "2023-03-07T11:24:07.738Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       2
     ]
@@ -164,11 +197,14 @@
   "model": "webapp.issue",
   "pk": 12,
   "fields": {
-    "summary": "Добавить новую функцию",
+    "summary": "Добавить новую функцию итоговой суммы товаров",
     "description": "Необходимо добавить функцию по возвращению общей суммы цены товара",
     "status": 3,
     "created_at": "2023-03-07T11:25:34.970Z",
-    "edited_at": "2023-03-07T11:25:34.970Z",
+    "edited_at": "2023-03-07T12:45:24.595Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1,
       3
@@ -184,6 +220,9 @@
     "status": 1,
     "created_at": "2023-03-07T11:26:14.719Z",
     "edited_at": "2023-03-07T11:26:14.719Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1
     ]
@@ -198,6 +237,9 @@
     "status": 1,
     "created_at": "2023-03-07T11:27:43.935Z",
     "edited_at": "2023-03-07T11:27:43.935Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 1,
     "type": [
       1
     ]
@@ -211,9 +253,133 @@
     "description": "Необходимо исправить ошибку в подсчете итоговой суммы зарплат сотрудников отдела",
     "status": 2,
     "created_at": "2023-03-07T11:28:50.042Z",
-    "edited_at": "2023-03-07T11:28:50.042Z",
+    "edited_at": "2023-03-09T13:37:44.663Z",
+    "is_deleted": false,
+    "deleted_date": "2023-03-09T13:37:44.663Z",
+    "project": 1,
     "type": [
       2
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 27,
+  "fields": {
+    "summary": "Выполнить ДЗ #59",
+    "description": "Этап 1\r\nПримените ListView в вашем проекте \"Трекер\" для представлений, выводящих списки объектов. Пагинируйте список по 10 задач на страницу и добавьте поиск по задачам: по вхождению текста в краткое или полное описание.\r\n\r\n\r\n\r\nТакже необходимо обработать 404 статус запроса. Страница должна выглядеть точно так же, как и основная, но вместо контента отображать текст “задачи не найдены”. При этом форма поиска должна оставаться на странице\r\n\r\n\r\n\r\nБонус (+0.5 балла):\r\n\r\nНапишите представление SearchView на базе ListView, которое можно было бы использовать в качестве базового для вывода списка данных с поисковой формой. В представлении должен быть метод get_query(), который возвращает поисковый запрос в виде Q-объекта или словаря ключевых аргументов, и который может быть переопределён в классах-наследниках, чтобы задать свою логику поиска.\r\n\r\nЭтап 2\r\nДобавьте в приложение модель \"Проект\" со следующими полями:\r\n\r\nдата начала - дата (без времени), указывается пользователем,\r\n\r\nдата окончания - дата (без времени), может быть пустой, указывается пользователем,\r\n\r\nназвание - строчное поле,\r\n\r\nописание - текстовое поле.\r\n\r\n\r\n\r\nСвяжите задачи с проектами внешним ключом. Для существующих задач перед миграцией создайте один тестовый проект и по умолчанию при миграции укажите его id. Обновите дамп данных.",
+    "status": 2,
+    "created_at": "2023-03-10T10:00:33.571Z",
+    "edited_at": "2023-03-10T12:24:58.793Z",
+    "is_deleted": false,
+    "deleted_date": "2023-03-10T12:24:58.792Z",
+    "project": 2,
+    "type": [
+      1,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 28,
+  "fields": {
+    "summary": "Подготовиться к лабораторной работе",
+    "description": "",
+    "status": 2,
+    "created_at": "2023-03-10T10:14:32.588Z",
+    "edited_at": "2023-03-10T13:09:46.031Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 2,
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 29,
+  "fields": {
+    "summary": "Повторить пройденные материалы",
+    "description": "Повторить пройденные материалы по Django",
+    "status": 2,
+    "created_at": "2023-03-10T10:19:06.691Z",
+    "edited_at": "2023-03-10T13:11:03.604Z",
+    "is_deleted": false,
+    "deleted_date": "2023-03-10T10:39:02.488Z",
+    "project": 2,
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 30,
+  "fields": {
+    "summary": "Почитать про разницу между итератором и генератор",
+    "description": "",
+    "status": 1,
+    "created_at": "2023-03-10T10:23:44.211Z",
+    "edited_at": "2023-03-10T13:12:26.572Z",
+    "is_deleted": false,
+    "deleted_date": "2023-03-10T11:32:33.514Z",
+    "project": 1,
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 31,
+  "fields": {
+    "summary": "Посмотреть вебинар",
+    "description": "Вебинар #28",
+    "status": 3,
+    "created_at": "2023-03-10T10:39:33.798Z",
+    "edited_at": "2023-03-10T13:10:13.610Z",
+    "is_deleted": false,
+    "deleted_date": "2023-03-10T11:33:54.843Z",
+    "project": 2,
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 32,
+  "fields": {
+    "summary": "Пройти курс на Udemy",
+    "description": "",
+    "status": 2,
+    "created_at": "2023-03-10T12:58:04.302Z",
+    "edited_at": "2023-03-10T13:13:12.321Z",
+    "is_deleted": false,
+    "deleted_date": "2023-03-10T13:01:27.756Z",
+    "project": 1,
+    "type": [
+      3,
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 33,
+  "fields": {
+    "summary": "Подготовить презентацию",
+    "description": "Подготовить презентацию для заказчика",
+    "status": 1,
+    "created_at": "2023-03-10T13:03:20.122Z",
+    "edited_at": "2023-03-10T13:09:06.981Z",
+    "is_deleted": false,
+    "deleted_date": null,
+    "project": 3,
+    "type": [
+      1
     ]
   }
 },
@@ -269,6 +435,42 @@
     "name": "Улучшение",
     "created_at": "2023-03-02T19:10:08.480Z",
     "edited_at": "2023-03-02T19:44:41.709Z"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 1,
+  "fields": {
+    "started_at": "2023-03-09",
+    "ended_at": null,
+    "name": "Python",
+    "description": "Проект, в который входят задачи связанные с ДЗ",
+    "is_deleted": false,
+    "deleted_date": null
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 2,
+  "fields": {
+    "started_at": "2023-03-10",
+    "ended_at": "2023-09-01",
+    "name": "Учебный курс AP-10",
+    "description": "В данном проекте отражены все ДЗ по курсу программирования Python",
+    "is_deleted": false,
+    "deleted_date": null
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 3,
+  "fields": {
+    "started_at": "2023-03-10",
+    "ended_at": null,
+    "name": "ESDP",
+    "description": "",
+    "is_deleted": false,
+    "deleted_date": null
   }
 },
 {

@@ -21,7 +21,7 @@
 {% else %}
 <div class="another_view">
     <h2>Проекты не найдены!</h2>
-    <p><a href="#">Добавить проект</a></p>
+    <p><a href="{% url 'project_add_view' %}">Добавить проект</a></p>
 </div>
 {% endif %}
 {% endblock %}

@@ -48,6 +48,7 @@ class IssuesView(ListView):
 class IssueDetailsView(DetailView):
     template_name = 'issue/issue_details_view.html'
     model = Issue
+    queryset = Issue.objects.exclude(is_deleted=True)
 
 
 class IssueAddView(CreateView):

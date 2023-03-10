@@ -29,7 +29,6 @@
     <p><a href="{% url 'issue_add_view' %}">Добавить задачу</a></p>
 </div>
 {% endif %}
-{% include 'partial/search_form.html' %}
 {% if is_paginated %}
 {% include 'partial/pagination.html' %}
 {% endif %}

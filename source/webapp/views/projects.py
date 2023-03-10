@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, RedirectView
 
-from webapp.forms import ProjectForm, IssueForm, ProjectIssueForm
+from webapp.forms import ProjectForm, ProjectIssueForm
 from webapp.models import Project, Issue
 
 
@@ -37,7 +37,6 @@ class ProjectIssueAddView(CreateView):
 
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
-        print(project)
         issue = form.save(commit=False)
         issue.project = project
         issue.save()
