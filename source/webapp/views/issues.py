@@ -1,10 +1,7 @@
-from django.core.handlers.wsgi import WSGIRequest
 from django.db.models import Q
-from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
-from django.views import View
-from django.views.generic import TemplateView, RedirectView, ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from webapp.forms import IssueForm, SearchForm
 from webapp.models import Issue
@@ -62,38 +59,17 @@ class IssueAddView(CreateView):
         return reverse('issue_details_view', kwargs={'pk': self.object.pk})
 
 
-class IssueEditView(TemplateView):
+class IssueEditView(UpdateView):
     template_name = 'issue/issue_edit_view.html'
+    model = Issue
+    form_class = IssueForm
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['issue'] = get_object_or_404(Issue, pk=kwargs['pk'])
-        context['form'] = IssueForm(instance=context['issue'])
-        return context
-
-    def post(self, request: WSGIRequest, *args, **kwargs):
-        issue = get_object_or_404(Issue, pk=kwargs['pk'])
-        form = IssueForm(request.POST, instance=issue)
-        if form.is_valid():
-            form.save()
-            return redirect('issue_details_view', pk=issue.pk)
-        return render(request, 'issue/issue_edit_view.html', context={
-            'form': form,
-            'issue': issue
-        })
+    def get_success_url(self):
+        return reverse('issue_details_view', kwargs={'pk': self.object.pk})
 
 
-class IssueDeleteView(TemplateView):
+class IssueDeleteView(DeleteView):
     template_name = 'issue/issue_delete_view.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['issue'] = get_object_or_404(Issue, pk=kwargs['pk'])
-        return context
-
-
-class IssueConfirmDeleteView(View):
-    def get(self, request, *args, **kwargs):
-        issue = get_object_or_404(Issue, pk=kwargs['pk'])
-        issue.delete()
-        return redirect('issues_view')
+    model = Issue
+    context_object_name = 'issue'
+    success_url = reverse_lazy('issues_view')

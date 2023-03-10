@@ -66,8 +66,8 @@ class Issue(models.Model):
         related_name='issues',
         on_delete=models.RESTRICT,
         verbose_name='Проект',
-        null=True,
-        blank=True
+        null=False,
+        blank=False
     )
 
     def __str__(self):
