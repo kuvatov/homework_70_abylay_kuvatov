@@ -37,7 +37,7 @@
         {% else %}
         <div class="another_view">
             <h2>Задачи не найдены!</h2>
-            <p><a href="{% url 'issue_add_view' %}">Добавить задачу</a></p>
+            <p><a href="{% url 'project_issue_add_view' project.pk %}">Добавить задачу</a></p>
         </div>
         {% endif %}
     </div>

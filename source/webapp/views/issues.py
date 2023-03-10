@@ -1,9 +1,10 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils.http import urlencode
 from django.views import View
-from django.views.generic import TemplateView, RedirectView, ListView
+from django.views.generic import TemplateView, RedirectView, ListView, CreateView, DetailView
 
 from webapp.forms import IssueForm, SearchForm
 from webapp.models import Issue
@@ -47,35 +48,18 @@ class IssuesView(ListView):
         return None
 
 
-class IssueDetailsView(TemplateView):
+class IssueDetailsView(DetailView):
     template_name = 'issue/issue_details_view.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['issue'] = get_object_or_404(Issue, pk=kwargs['pk'])
-        return context
+    model = Issue
 
 
-class IssuesRedirectView(RedirectView):
-    pattern_name = 'issues_view'
-
-
-class IssueAddView(TemplateView):
+class IssueAddView(CreateView):
     template_name = 'issue/issue_add_view.html'
+    model = Issue
+    form_class = IssueForm
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = IssueForm()
-        return context
-
-    def post(self, request: WSGIRequest, *args, **kwargs):
-        form = IssueForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('issues_view')
-        return render(request, 'issue/issue_add_view.html', context={
-            'form': form
-        })
+    def get_success_url(self):
+        return reverse('issue_details_view', kwargs={'pk': self.object.pk})
 
 
 class IssueEditView(TemplateView):

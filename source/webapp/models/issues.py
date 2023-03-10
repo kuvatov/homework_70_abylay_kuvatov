@@ -65,7 +65,9 @@ class Issue(models.Model):
         to='webapp.Project',
         related_name='issues',
         on_delete=models.RESTRICT,
-        verbose_name='Проект'
+        verbose_name='Проект',
+        null=True,
+        blank=True
     )
 
     def __str__(self):

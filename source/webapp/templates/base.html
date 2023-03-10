@@ -18,7 +18,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'issues_view' %}">
+                <a class="navbar-brand" href="{% url 'projects_view' %}">
                     <img src="{% static 'media/favicon.ico' %}" alt="" width="30" height="30"
                          class="d-inline-block align-text-top">
                     Issue Tracker
@@ -32,6 +32,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'project_add_view' %}">добавить
                                 проект</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'issues_view' %}">задачи</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'issue_add_view' %}">добавить
