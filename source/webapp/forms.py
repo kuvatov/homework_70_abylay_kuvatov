@@ -1,6 +1,6 @@
 from django import forms
 
-from webapp.models import Issue, Type, Status
+from webapp.models import Issue, Type, Status, Project
 
 
 class IssueForm(forms.ModelForm):
@@ -27,3 +27,9 @@ class IssueForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     search = forms.CharField(max_length=100, required=False, label="Найти")
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['name', 'description', 'started_at', 'ended_at']
