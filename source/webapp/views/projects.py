@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, RedirectView
@@ -21,7 +22,7 @@ class ProjectDetailsView(DetailView):
     model = Project
 
 
-class ProjectAddView(CreateView):
+class ProjectAddView(LoginRequiredMixin, CreateView):
     template_name = 'project/project_add_view.html'
     model = Project
     form_class = ProjectForm
@@ -30,7 +31,7 @@ class ProjectAddView(CreateView):
         return reverse('project_details_view', kwargs={'pk': self.object.pk})
 
 
-class ProjectIssueAddView(CreateView):
+class ProjectIssueAddView(LoginRequiredMixin, CreateView):
     model = Issue
     template_name = 'project/project_issue_add_view.html'
     form_class = ProjectIssueForm
