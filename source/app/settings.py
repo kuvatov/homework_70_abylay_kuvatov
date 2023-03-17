@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "bootstrap5",
     "debug_toolbar",
-    "webapp"
+    "webapp",
+    "accounts"
 ]
 
 MIDDLEWARE = [
@@ -115,6 +116,10 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+LOGIN_REDIRECT_URL = 'projects_view'
+LOGOUT_REDIRECT_URL = 'projects_view'
+LOGIN_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
