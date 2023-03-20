@@ -18,10 +18,12 @@
             {% endfor %}
         </p>
         <p class="card-text"><b>Статус задачи:</b> {{ issue.status }}</p>
+        {% if perms.webapp.change_issue %}
         <div class="page_action">
             <a href="{% url 'issue_edit_view' issue.pk %}" class="btn btn-primary">Редактировать</a>
             <a href="{% url 'issue_delete_view' issue.pk %}" class="btn btn-danger">Удалить</a>
         </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

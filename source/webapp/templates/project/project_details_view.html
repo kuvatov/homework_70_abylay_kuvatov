@@ -2,11 +2,13 @@
 {% block title %}Project Details{% endblock %}
 {% block content_heading %}Подробное описание проекта{% endblock %}
 {% block content %}
+{% if perms.webapp.add_project %}
 <p>
     <a class="add_project_issue btn btn-secondary" href="{% url 'project_issue_add_view' project.pk %}">Добавить задачу
         в
         проект</a>
 </p>
+{% endif %}
 <div class="card">
     <h5 class="card-header">Проект #{{ project.pk }}</h5>
     <div class="card-body">

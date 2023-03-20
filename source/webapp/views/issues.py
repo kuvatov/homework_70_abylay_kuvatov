@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
 from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
@@ -52,7 +52,8 @@ class IssueDetailsView(DetailView):
     queryset = Issue.objects.exclude(is_deleted=True)
 
 
-class IssueAddView(LoginRequiredMixin, CreateView):
+class IssueAddView(PermissionRequiredMixin, CreateView):
+    permission_required = 'webapp.add_issue'
     template_name = 'issue/issue_add_view.html'
     model = Issue
     form_class = IssueForm
@@ -61,7 +62,8 @@ class IssueAddView(LoginRequiredMixin, CreateView):
         return reverse('issue_details_view', kwargs={'pk': self.object.pk})
 
 
-class IssueEditView(LoginRequiredMixin, UpdateView):
+class IssueEditView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'webapp.change_issue'
     template_name = 'issue/issue_edit_view.html'
     model = Issue
     form_class = IssueForm
@@ -70,7 +72,8 @@ class IssueEditView(LoginRequiredMixin, UpdateView):
         return reverse('issue_details_view', kwargs={'pk': self.object.pk})
 
 
-class IssueDeleteView(LoginRequiredMixin, DeleteView):
+class IssueDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'webapp.delete_issue'
     template_name = 'issue/issue_delete_view.html'
     model = Issue
     context_object_name = 'issue'

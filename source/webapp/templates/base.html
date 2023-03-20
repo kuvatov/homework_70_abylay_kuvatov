@@ -33,14 +33,18 @@
                             <a class="nav-link active" aria-current="page" href="{% url 'issues_view' %}">задачи</a>
                         </li>
                         {% if user.is_authenticated %}
+                        {% if perms.webapp.add_project %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'project_add_view' %}">добавить
                                 проект</a>
                         </li>
+                        {% endif %}
+                        {% if perms.webapp.add_issue %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'issue_add_view' %}">добавить
                                 задачу</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">выход</a>
                         </li>
