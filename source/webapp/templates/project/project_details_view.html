@@ -3,8 +3,8 @@
 {% block content_heading %}Подробное описание проекта{% endblock %}
 {% block content %}
 {% if perms.webapp.add_project %}
-<div class="project_users pb-3">
-    <ul>Пользователи проекта:</ul>
+<h6>Пользователи проекта:</h6>
+<ol class="list-group list-group-numbered project_users pb-3">
     {% if users %}
     {% for user in users %}
     <li>{{ user.username }}</li>
@@ -12,7 +12,7 @@
     {% else %}
     <li>У проекта нет пользователей!</li>
     {% endif %}
-</div>
+</ol>
 <div class="project_details_buttons pb-3 d-flex justify-content-between">
     <a class="add_project_issue btn btn-primary" href="{% url 'project_issue_add_view' project.pk %}">Добавить
         задачу в проект</a>
