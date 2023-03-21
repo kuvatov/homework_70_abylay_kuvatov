@@ -11,6 +11,9 @@ header, .navbar a {
 header, .navbar a:hover {
     color: gray;
 }
+.username-item a {
+    color: blue;
+}
 .main_content {
     padding-bottom: 100px;
 }
