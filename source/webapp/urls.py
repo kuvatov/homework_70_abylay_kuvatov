@@ -2,7 +2,7 @@ from django.urls import path, include
 
 from webapp.views.issues import IssuesView, IssueDetailsView, IssueAddView, IssueEditView, IssueDeleteView
 from webapp.views.projects import ProjectsView, ProjectDetailsView, ProjectAddView, ProjectsRedirectView, \
-    ProjectIssueAddView
+    ProjectIssueAddView, AddUserView, DeleteUserView
 
 urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
@@ -15,5 +15,7 @@ urlpatterns = [
     path('projects', ProjectsRedirectView.as_view(), name='projects_redirect_view'),
     path('project/<int:pk>', ProjectDetailsView.as_view(), name='project_details_view'),
     path('project/add', ProjectAddView.as_view(), name='project_add_view'),
-    path('project/<int:pk>/issues/add', ProjectIssueAddView.as_view(), name='project_issue_add_view')
+    path('project/<int:pk>/issues/add', ProjectIssueAddView.as_view(), name='project_issue_add_view'),
+    path('project/<int:pk>/add_user', AddUserView.as_view(), name='project_add_user_view'),
+    path('project/<int:pk>/delete_user', DeleteUserView.as_view(), name='project_delete_user_view')
 ]

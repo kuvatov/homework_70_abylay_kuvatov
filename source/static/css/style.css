@@ -14,6 +14,9 @@ header, .navbar a:hover {
 .username-item a {
     color: blue;
 }
+.username-item a:hover {
+    color: blue;
+}
 .main_content {
     padding-bottom: 100px;
 }
@@ -97,4 +100,7 @@ footer p {
     border-radius: 5px;
     text-align: center;
     border: solid 1px gray;
+}
+.project_details_buttons a {
+    width: 300px;
 }

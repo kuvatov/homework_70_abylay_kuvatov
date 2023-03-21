@@ -19,8 +19,5 @@ class CustomUserCreationForm(UserCreationForm):
         if not first_name and not last_name:
             raise forms.ValidationError('Хотя бы одно из полей (Имя, Фамилия) должно быть заполнено!')
 
-        if not email:
-            raise forms.ValidationError('Заполните email')
-
     class Meta(UserCreationForm.Meta):
         fields = ['username', 'password1', 'password2', 'first_name', 'last_name', 'email']

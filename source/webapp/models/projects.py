@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
@@ -35,6 +36,17 @@ class Project(models.Model):
         verbose_name="Дата и время удаления",
         null=True,
         default=None
+    )
+    users = models.ManyToManyField(
+        User,
+        related_name='projects',
+        verbose_name='Пользователи'
+    )
+    created_by = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='created_projects',
+        default=1
     )
 
     def __str__(self):
