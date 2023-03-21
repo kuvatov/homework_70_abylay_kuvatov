@@ -4,6 +4,7 @@
 {% block content %}
 {% if projects %}
 {% for project in projects %}
+{% if user in project.users.all or user.is_superuser %}
 <div class="card mb-3 border-dark">
     <h5 class="card-header">Проект #{{ project.pk }}</h5>
     <div class="card-body">
@@ -17,6 +18,7 @@
         <a href="{% url 'project_details_view' project.pk %}">Подробнее >>></a>
     </div>
 </div>
+{% endif %}
 {% endfor %}
 {% else %}
 <div class="another_view">

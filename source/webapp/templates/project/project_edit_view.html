@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Project Edit{% endblock %}
+{% block content_heading %}Редактировать проект{% endblock %}
+{% block content %}
+<form action="{% url 'project_edit_view' project.pk %}" method="post" novalidate>
+    {% include 'partial/form.html' %}
+</form>
+{% endblock %}

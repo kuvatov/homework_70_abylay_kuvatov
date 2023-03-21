@@ -34,17 +34,19 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'projects_view' %}">проекты</a>
                         </li>
+                        {% if user.groups.all.0.name != "Developer" %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'issues_view' %}">задачи</a>
                         </li>
+                        {% endif %}
                         {% if user.is_authenticated %}
-                        {% if perms.webapp.add_project %}
+                        {% if user.groups.all.0.name == "Project Manager" or user.is_superuser %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'project_add_view' %}">добавить
                                 проект</a>
                         </li>
                         {% endif %}
-                        {% if perms.webapp.add_issue %}
+                        {% if user.groups.all.0.name != "Developer" %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'issue_add_view' %}">добавить
                                 задачу</a>

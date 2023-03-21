@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
-from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView, RedirectView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, RedirectView, UpdateView, DeleteView
 
 from webapp.forms import ProjectForm, ProjectIssueForm
 from webapp.models import Project, Issue
@@ -15,6 +15,7 @@ class ProjectsView(ListView):
     template_name = 'project/projects_view.html'
     model = Project
     context_object_name = 'projects'
+    queryset = Project.objects.exclude(is_deleted=True)
 
 
 class ProjectsRedirectView(RedirectView):
@@ -24,7 +25,7 @@ class ProjectsRedirectView(RedirectView):
 class ProjectDetailsView(DetailView):
     template_name = 'project/project_details_view.html'
     model = Project
-    context_object_name = 'project'
+    queryset = Project.objects.exclude(is_deleted=True)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -34,7 +35,7 @@ class ProjectDetailsView(DetailView):
 
 
 class AddUserView(PermissionRequiredMixin, DetailView):
-    permission_required = 'webapp.add_project_users'
+    permission_required = 'auth.add_user'
     template_name = 'project/project_add_user_view.html'
     model = Project
     context_object_name = 'project'
@@ -55,7 +56,7 @@ class AddUserView(PermissionRequiredMixin, DetailView):
 
 
 class DeleteUserView(PermissionRequiredMixin, DetailView):
-    permission_required = 'webapp.delete_project_users'
+    permission_required = 'auth.delete_user'
     template_name = 'project/project_delete_user_view.html'
     model = Project
     context_object_name = 'project'
@@ -94,7 +95,7 @@ class ProjectAddView(PermissionRequiredMixin, CreateView):
 
 
 class ProjectIssueAddView(PermissionRequiredMixin, CreateView):
-    permission_required = 'webapp.add_project_issue'
+    permission_required = 'webapp.add_issue'
     model = Issue
     template_name = 'project/project_issue_add_view.html'
     form_class = ProjectIssueForm
@@ -105,3 +106,21 @@ class ProjectIssueAddView(PermissionRequiredMixin, CreateView):
         issue.project = project
         issue.save()
         return redirect('project_details_view', pk=project.pk)
+
+
+class ProjectEditView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'webapp.change_project'
+    template_name = 'project/project_edit_view.html'
+    model = Project
+    form_class = ProjectForm
+
+    def get_success_url(self):
+        return reverse('project_details_view', kwargs={'pk': self.object.pk})
+
+
+class ProjectDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'webapp.delete_project'
+    template_name = 'project/project_delete_view.html'
+    model = Project
+    context_object_name = 'project'
+    success_url = reverse_lazy('projects_view')

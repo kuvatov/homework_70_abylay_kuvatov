@@ -2,7 +2,7 @@
 {% block title %}Project Details{% endblock %}
 {% block content_heading %}Подробное описание проекта{% endblock %}
 {% block content %}
-{% if perms.webapp.add_project %}
+{% if user.is_superuser %}
 <h6>Пользователи проекта:</h6>
 <ol class="list-group list-group-numbered project_users pb-3">
     {% if users %}
@@ -13,15 +13,23 @@
     <li>У проекта нет пользователей!</li>
     {% endif %}
 </ol>
-<div class="project_details_buttons pb-3 d-flex justify-content-between">
-    <a class="add_project_issue btn btn-primary" href="{% url 'project_issue_add_view' project.pk %}">Добавить
-        задачу в проект</a>
-    <a class="add_project_issue btn btn-success" href="{% url 'project_add_user_view' pk=project.pk %}">Добавить
-        пользователей в проект</a>
-    <a class="add_project_issue btn btn-danger" href="{% url 'project_delete_user_view' pk=project.pk %}">Удалить
-        пользователей из проекта</a>
-</div>
 {% endif %}
+<h6>Действия:</h6>
+<ol class="list-group list-group-numbered project_users pb-3">
+    <li>
+        <a class="add_project_issue" href="{% url 'project_issue_add_view' project.pk %}">Добавить задачу в проект</a>
+    </li>
+    {% if user.groups.all.0.name != "Developer" %}
+    <li>
+        <a class="add_project_issue" href="{% url 'project_add_user_view' pk=project.pk %}">Добавить пользователей в
+            проект</a>
+    </li>
+    <li>
+        <a class="add_project_issue" href="{% url 'project_delete_user_view' pk=project.pk %}">Удалить пользователей из
+            проекта</a>
+    </li>
+    {% endif %}
+</ol>
 <div class="card">
     <h5 class="card-header">Проект #{{ project.pk }}</h5>
     <div class="card-body">
@@ -36,6 +44,12 @@
         <p class="card-text"><b>Дата окончания:</b> {{ project.ended_at }}</p>
         {% else %}
         <p class="card-text"><b>Дата окончания:</b> Дата окончания не задана!</p>
+        {% endif %}
+        {% if user.groups.all.0.name == "Project Manager" or user.is_superuser %}
+        <div class="page_action pb-3">
+            <a href="{% url 'project_edit_view' project.pk %}" class="btn btn-primary">Редактировать</a>
+            <a href="{% url 'project_delete_view' project.pk %}" class="btn btn-danger">Удалить</a>
+        </div>
         {% endif %}
         {% if project.issues.all %}
         {% for issue in project.issues.all %}

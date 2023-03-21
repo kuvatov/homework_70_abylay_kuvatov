@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Project Delete{% endblock %}
+{% block content_heading %}Удалить проект{% endblock %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h5>Вы уверены, что хотите удалить проект - {{ project.pk }} ?!</h5>
+    <p><b>Проект:</b> {{ project.name }}</p>
+    <div class="page_action">
+        <input type="submit" value="Удалить" class="btn btn-danger">
+        <a class="btn btn-secondary" href="{% url 'projects_view' %}">Отмена</a>
+    </div>
+</form>
+{% endblock %}
