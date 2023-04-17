@@ -4,7 +4,6 @@
 {% block content %}
 {% if projects %}
 {% for project in projects %}
-{% if user in project.users.all or user.is_superuser %}
 <div class="card mb-3 border-dark">
     <h5 class="card-header">Проект #{{ project.pk }}</h5>
     <div class="card-body">
@@ -15,15 +14,18 @@
         {% else %}
         <p class="card-text"><b>Дата окончания:</b> Дата окончания не задана!</p>
         {% endif %}
+        {% if user in project.users.all or user.is_superuser %}
         <a href="{% url 'project_details_view' project.pk %}">Подробнее >>></a>
+        {% endif %}
     </div>
 </div>
-{% endif %}
 {% endfor %}
 {% else %}
+{% if user in project.users.all or user.is_superuser %}
 <div class="another_view">
     <h2>Проекты не найдены!</h2>
     <p><a href="{% url 'project_add_view' %}">Добавить проект</a></p>
 </div>
+{% endif %}
 {% endif %}
 {% endblock %}

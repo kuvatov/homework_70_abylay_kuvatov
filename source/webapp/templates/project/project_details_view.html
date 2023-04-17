@@ -2,7 +2,6 @@
 {% block title %}Project Details{% endblock %}
 {% block content_heading %}Подробное описание проекта{% endblock %}
 {% block content %}
-{% if user.is_superuser %}
 <h6>Пользователи проекта:</h6>
 <ol class="list-group list-group-numbered project_users pb-3">
     {% if users %}
@@ -13,7 +12,7 @@
     <li>У проекта нет пользователей!</li>
     {% endif %}
 </ol>
-{% endif %}
+{% if user.is_authorized %}
 <h6>Действия:</h6>
 <ol class="list-group list-group-numbered project_users pb-3">
     <li>
@@ -30,6 +29,7 @@
     </li>
     {% endif %}
 </ol>
+{% endif %}
 <div class="card">
     <h5 class="card-header">Проект #{{ project.pk }}</h5>
     <div class="card-body">
