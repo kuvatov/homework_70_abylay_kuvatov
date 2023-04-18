@@ -28,14 +28,14 @@ _Для проверки метода PUT, необходимо сначала �
 #### detail
 GET _hostname_/api/project/id
 #### update
-PUT _hostname_/api/project/id/update
+PUT _hostname_/api/project/id
 #### delete
-DELETE _hostname_/api/project/id/delete
+DELETE _hostname_/api/project
 
 ### Issues
 #### detail
 GET _hostname_/api/issue/id
 #### update
-PUT _hostname_/api/issue/id/update
+PUT _hostname_/api/issue/id
 #### delete
-DELETE _hostname_/api/issue/id/delete
+DELETE _hostname_/api/issue/id
