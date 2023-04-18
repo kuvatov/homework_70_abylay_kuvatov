@@ -3,11 +3,6 @@ from django.db import models
 from django.utils import timezone
 
 
-def validate_summary_exists(value):
-    if Issue.objects.filter(summary=value).exists():
-        raise ValidationError('Краткое описание с таким названием уже существует!')
-
-
 def validate_summary_min_length(value):
     if len(value) < 5:
         raise ValidationError('Краткое описание должно быть длиннее 5 символов!')
@@ -20,7 +15,6 @@ class Issue(models.Model):
         blank=False,
         verbose_name="Краткое описание",
         validators=[
-            validate_summary_exists,
             validate_summary_min_length
         ]
     )

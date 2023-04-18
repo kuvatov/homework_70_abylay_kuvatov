@@ -17,7 +17,6 @@ class Migration(migrations.Migration):
             field=models.CharField(
                 max_length=50,
                 validators=[
-                    webapp.models.issues.validate_summary_exists,
                     webapp.models.issues.validate_summary_min_length,
                 ],
                 verbose_name="Краткое описание",
