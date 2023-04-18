@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     "bootstrap5",
     "debug_toolbar",
     "webapp",
-    "accounts"
+    "accounts",
+    "api"
 ]
 
 MIDDLEWARE = [

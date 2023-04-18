@@ -11,3 +11,13 @@ class ProjectDetailView(APIView):
         project = Project.objects.get(pk=pk)
         serializer = ProjectSerializer(project)
         return Response(serializer.data)
+
+
+class ProjectUpdateView(APIView):
+    def put(self, request, pk):
+        project = Project.objects.get(pk=pk)
+        serializer = ProjectSerializer(project, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
