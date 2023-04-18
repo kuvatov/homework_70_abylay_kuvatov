@@ -21,3 +21,10 @@ class ProjectUpdateView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ProjectDeleteView(APIView):
+    def delete(self, request, pk):
+        project = Project.objects.get(pk=pk)
+        project.delete()
+        return Response({'deleted': pk})
