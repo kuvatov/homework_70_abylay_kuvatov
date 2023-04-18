@@ -30,7 +30,7 @@ GET _hostname_/api/project/id
 #### update
 PUT _hostname_/api/project/id
 #### delete
-DELETE _hostname_/api/project
+DELETE _hostname_/api/project/id
 
 ### Issues
 #### detail
