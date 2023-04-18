@@ -6,14 +6,12 @@ from api.serializers import IssueSerializer
 from webapp.models import Issue
 
 
-class IssueDetailView(APIView):
+class IssueAPIView(APIView):
     def get(self, request, pk):
         issue = Issue.objects.get(pk=pk)
         serializer = IssueSerializer(issue)
         return Response(serializer.data)
 
-
-class IssueUpdateView(APIView):
     def put(self, request, pk):
         issue = Issue.objects.get(pk=pk)
         serializer = IssueSerializer(issue, data=request.data)
@@ -22,8 +20,6 @@ class IssueUpdateView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-class IssueDeleteView(APIView):
     def delete(self, request, pk):
         issue = Issue.objects.get(pk=pk)
         issue.delete()
