@@ -6,14 +6,12 @@ from api.serializers import ProjectSerializer
 from webapp.models import Project
 
 
-class ProjectDetailView(APIView):
+class ProjectAPIView(APIView):
     def get(self, request, pk):
         project = Project.objects.get(pk=pk)
         serializer = ProjectSerializer(project)
         return Response(serializer.data)
 
-
-class ProjectUpdateView(APIView):
     def put(self, request, pk):
         project = Project.objects.get(pk=pk)
         serializer = ProjectSerializer(project, data=request.data)
@@ -22,8 +20,6 @@ class ProjectUpdateView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-class ProjectDeleteView(APIView):
     def delete(self, request, pk):
         project = Project.objects.get(pk=pk)
         project.delete()
