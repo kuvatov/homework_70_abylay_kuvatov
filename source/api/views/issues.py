@@ -21,3 +21,10 @@ class IssueUpdateView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class IssueDeleteView(APIView):
+    def delete(self, request, pk):
+        issue = Issue.objects.get(pk=pk)
+        issue.delete()
+        return Response({'deleted': pk})
